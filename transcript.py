@@ -1,37 +1,23 @@
-import googleapiclientpyt.discovery
+from transformers import pipeline
+from youtube_transcript_api import YouTubeTranscriptApi
 
-# Replace 'YOUR_API_KEY' with the API key you obtained
-API_KEY = 'AIzaSyB9ZMiriNQTP6DvWScEbzq2uHLUWL9JNK8'
-YOUTUBE_API_SERVICE_NAME = 'youtube'
-YOUTUBE_API_VERSION = 'v3'
 
-def get_video_transcript(video_id):
-    youtube = googleapiclient.discovery.build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=API_KEY)
+#implement a function that would get link from kevin code
+link = "https://www.youtube.com/watch?v=5yh0HA4Mjfc&t=9s"
 
-    # Request video details
-    video_response = youtube.videos().list(part='snippet,contentDetails', id=video_id).execute()
+#getting video ID
+video_id = link.split("=")[1]
 
-    # Extract video title
-    video_title = video_response['items'][0]['snippet']['title']
+YouTubeTranscriptApi.get_transcript(video_id)
+transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
-    # Request captions
-    captions_response = youtube.captions().list(part='snippet', videoId=video_id).execute()
+transcript
 
-    # Extract the caption track ID
-    caption_track_id = captions_response['items'][0]['id']
+result=""
 
-    # Request caption content
-    caption_content = youtube.captions().download(id=caption_track_id).execute()
+for i in transcript:
+    result+= ' ' + i['text']
 
-    # Extract transcript
-    transcript = caption_content['body']
+print(result)
 
-    return video_title, transcript
-
-if __name__ == '__main__':
-    video_id = 'YOUR_VIDEO_ID'  # Replace with the actual YouTube video ID
-    title, transcript = get_video_transcript(video_id)
-
-    print(f"Video Title: {title}")
-    print("Transcript:")
-    print(transcript)
+#summarizer = pipeline('summarization')

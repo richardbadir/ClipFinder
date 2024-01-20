@@ -30,7 +30,7 @@ class Transcript():
             if "\"" in answer:
                 answer = answer.split("\"")[1]
             if answer in self.results:
-                
+                pass
 
         
 

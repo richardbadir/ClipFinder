@@ -1,5 +1,8 @@
 from openai import OpenAI
-client = OpenAI()
+import os
+print (os.environ.get("APIKEY"))
+client = OpenAI(api_key=os.environ.get("APIKEY"))
+
 
 def findAnswer(transcript: str, question:str):
     completion = client.chat.completions.create(

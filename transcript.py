@@ -16,7 +16,12 @@ class Transcript():
         self.result=' '.join([i['text'] for i in self.transcript])
         self.words = []
         for element in self.transcript:
-            element
+            words = element['text'].split(" ")
+            time = element['timestamp']
+            print(element)
+            for word in words:
+                self.words.append([word, time])
+        
 
 
             
@@ -33,3 +38,4 @@ class Transcript():
                 answer = answer.split("\"")[1]
             if answer not in self.results:
                 continue
+

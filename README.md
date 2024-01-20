@@ -1,0 +1,2 @@
+# ClipFinder
+ConUHacks VIII project

@@ -10,8 +10,9 @@ CORS(app)
 def get_video_transcript():
     data = request.json
     video_url = data.get('videoUrl')
+    question = data.get('question')
 
-    transcript_obj = Transcript(video_url, "Hello?")
+    transcript_obj = Transcript(video_url, question)
     transcript_text = transcript_obj.result
     return jsonify({'transcript': transcript_text})
 

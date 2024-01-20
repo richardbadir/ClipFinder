@@ -1,3 +1,5 @@
 openai
 transformers
 youtube_transcript_api
+flask
+flask_cors

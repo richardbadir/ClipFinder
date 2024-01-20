@@ -3,7 +3,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 
 class Transcript():
-    def __init__(self, link :str):
+    def __init__(self, link :str, question:str):
         #implement a function that would get link from kevin code
         self.link = link
         #getting video ID
@@ -11,11 +11,11 @@ class Transcript():
 
         YouTubeTranscriptApi.get_transcript(video_id)
         self.transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        self.question = question
 
-        self.result=""
+        self.result=' '.join([i['text'] for i in self.transcript])
 
-        for i in self.transcript:
-            self.result+= ' ' + i['text']
+
             
     def findTime(self):
         answers = findAnswer()

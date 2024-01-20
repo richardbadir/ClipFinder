@@ -29,8 +29,9 @@ class Transcript():
                 answer.strip("\"")
             if "\"" in answer:
                 answer = answer.split("\"")[1]
-            if answer in self.results:
-                pass
+            if answer not in self.results:
+                continue
+            
 
         
 

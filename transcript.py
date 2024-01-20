@@ -1,9 +1,11 @@
 # transcript.py
 from youtube_transcript_api import YouTubeTranscriptApi
+from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 
-class Transcript:
-    def __init__(self, link):
-        self.link = link
+class Transcript():
+    def __init__(self, link :str):
+        #implement a function that would get link from kevin code
+        link = "https://www.youtube.com/watch?v=5yh0HA4Mjfc&t=9s"
 
     def get_transcript(self):
         video_id = self.link.split("v=")[1].split("&")[0]

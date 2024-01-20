@@ -1,1 +1,3 @@
 openai
+transformers
+youtube_transcript_api

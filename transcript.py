@@ -5,18 +5,28 @@ from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 class Transcript():
     def __init__(self, link :str):
         #implement a function that would get link from kevin code
-        link = "https://www.youtube.com/watch?v=5yh0HA4Mjfc&t=9s"
+        self.link = link
+        #getting video ID
+        video_id = link.split("=")[1]
 
-    def get_transcript(self):
-        video_id = self.link.split("v=")[1].split("&")[0]
-        try:
-            transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
-            transcript_text = ' '.join([i['text'] for i in transcript_list])
-            return transcript_text
-        except Exception as e:
-            return str(e)
+        YouTubeTranscriptApi.get_transcript(video_id)
+        self.transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
-# Example usage:
-# transcript_instance = Transcript("https://www.youtube.com/watch?v=5yh0HA4Mjfc")
-# transcript_text = transcript_instance.get_transcript()
-# print(transcript_text)
+        self.result=""
+
+        for i in self.transcript:
+            self.result+= ' ' + i['text']
+            
+    def findTime(self):
+        answers = findAnswer()
+        for answer in answers:
+            answer.strip()
+            answer.lower()
+            answer.strip("\"")
+            if ":" in answer:
+                answer = answer.split(":")[1]
+                answer.strip("\"")
+            if "\"" in answer:
+                answer = answer.split("\"")[1]
+            if answer not in self.results:
+                continue

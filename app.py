@@ -12,9 +12,8 @@ def get_video_transcript():
     video_url = data.get('videoUrl')
 
     transcript_obj = Transcript(video_url)
-    transcript_text = transcript_obj.get_transcript()
-
-    return jsonify({'transcript': transcript_text})
+    transcript_text = transcript_obj.transcript
+    return transcript_text
 
 if __name__ == '__main__':
     app.run(debug=True)

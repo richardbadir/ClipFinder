@@ -14,11 +14,14 @@ class Transcript():
         self.question = question
 
         self.result=' '.join([i['text'] for i in self.transcript])
+        self.words = []
+        for element in self.transcript:
+            element
 
 
             
     def findTime(self):
-        answers = findAnswer()
+        answers = findAnswer(self.result,self.question)
         for answer in answers:
             answer.strip()
             answer.lower()

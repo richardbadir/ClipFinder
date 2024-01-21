@@ -2,7 +2,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 
 class Transcript():
-    def __init__(self, link :str, question:str):
+    def __init__(self, link :str, question:str=""):
         #implement a function that would get link from kevin code
         self.link = link
         #getting video ID
@@ -21,25 +21,26 @@ class Transcript():
             for word in words:
                 if not word.startswith("["):
                     self.words.append([word.lower(), timestamp])
-        time = self.findTime()
-        print(time)
-        stime=""
-        if time>=0:
-            hours = time//3600
-            time-=hours*3600
-            minutes =time//60
-            time-=minutes*60
-            seconds = time
+        if question:
+            time = self.findTime()
+            print(time)
+            stime=""
+            if time>=0:
+                hours = time//3600
+                time-=hours*3600
+                minutes =time//60
+                time-=minutes*60
+                seconds = time
 
-            if hours:
-                stime+=f"{int(hours)}h {int(minutes)}min {int(seconds)}sec"
-            elif minutes:
-                stime+=f"{int(minutes)}min {int(seconds)}sec"
-            else:
-                stime+=f"{int(seconds)}sec"
-        if stime:
-            self.answer+=f" Clip available at {stime}."
-        print(self.answer)
+                if hours:
+                    stime+=f"{int(hours)}h {int(minutes)}min {int(seconds)}sec"
+                elif minutes:
+                    stime+=f"{int(minutes)}min {int(seconds)}sec"
+                else:
+                    stime+=f"{int(seconds)}sec"
+            if stime:
+                self.answer+=f" Clip available at {stime}."
+            print(self.answer)
 
 
 

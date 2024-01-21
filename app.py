@@ -24,11 +24,7 @@ def get_video_summary():
     video_url = data.get('videoUrl')
     transcript_obj = Transcript(video_url)
     transcript_text = transcript_obj.result
-    answer = transcript_obj.answer
-
-
-    summary = VideoSummary(video_url)  
-
+    summary = VideoSummary(transcript_text)  
     return jsonify({'summary': summary})
 
 if __name__ == '__main__':

@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   summarizeButton.addEventListener('click', function() {
-      console.log("Summarize button clicked.");
-      // Additional code to request a video summary from content.js or the server
-  });
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var activeTab = tabs[0];
+        var videoUrl = activeTab.url;
+        requestSummary(videoUrl);
+    });
+});
 });
 
 function sendVideoUrlAndQuestionToServer(videoUrl, question) {
@@ -42,9 +45,37 @@ function sendVideoUrlAndQuestionToServer(videoUrl, question) {
 }
 
 function updatePopupWithAnswer(answer) {
-    const answerElement = document.createElement('div');
-    answerElement.id = 'answer';
-    answerElement.textContent = answer;
-    answerElement.style.color = '#FFFFFF'; // Set the text color
-    document.body.appendChild(answerElement);
+  const answerElement = document.createElement('div');
+  answerElement.id = 'answer';
+  answerElement.textContent = answer;
+  answerElement.style.color = '#FFFFFF'; // Set the text color
+  document.body.appendChild(answerElement);
 }
+
+function requestSummary(videoUrl) {
+  fetch('http://localhost:5000/get_video_summary', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ videoUrl: videoUrl })
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.summary) {
+          downloadSummary(data.summary);
+      }
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+function downloadSummary(summaryText) {
+  const blob = new Blob([summaryText], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+
+  chrome.downloads.download({
+      url: url,
+      filename: 'summary.txt',
+      saveAs: true
+  });
+}
+
+

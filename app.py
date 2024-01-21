@@ -17,7 +17,7 @@ def get_video_transcript():
     summary= VideoSummary(transcript_text)
     answer = transcript_obj.answer
 
-    return jsonify({'transcript': transcript_text})
+    return jsonify({'transcript': transcript_text,'answer': answer})
 
 if __name__ == '__main__':
     app.run(debug=True)

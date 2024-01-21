@@ -17,18 +17,19 @@ class Transcript():
         self.words = []
         for element in self.transcript:
             words = element['text'].split(" ")
-            time = element['timestamp']
-            print(element)
+            timestamp = element['start']
+            
             for word in words:
-                self.words.append([word, time])
-        
+                if not word.startswith("["):
+                    self.words.append([word, timestamp])
+        self.findTime()
 
 
             
     def findTime(self):
         answers = findAnswer(self.result,self.question)
         for answer in answers:
-            answer.strip()
+            answer= str(answer.message).strip()
             answer.lower()
             answer.strip("\"")
             if ":" in answer:
@@ -36,6 +37,19 @@ class Transcript():
                 answer.strip("\"")
             if "\"" in answer:
                 answer = answer.split("\"")[1]
-            if answer not in self.results:
+            if answer not in self.result:
                 continue
+            answer = answer.split(" ")
+            for i in range(len(self.words)-len(answer)):
+                for j,word in enumerate(answer):
+                    if word != self.words[i+j][0]:
+                        break
+                    if j ==len(answer):
+                        print(self.words[i][1])
+
+                        return self.words[i][1]
+        print("no")
+        return -1
+                
+
 

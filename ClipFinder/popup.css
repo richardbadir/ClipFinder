@@ -42,7 +42,7 @@ img {
 
 h2 {
   text-align: center;
-  color: #fff; /* This changes the color of h2 elements to white */
+  color: #fff; 
 }
 
 #summarizeButton,
@@ -72,13 +72,13 @@ h2 {
 }
 
 #questionInput {
-  width: calc(100% - 40px); /* Adjust the width as needed, accounting for padding */
+  width: calc(100% - 40px);
   padding: 10px;
-  margin: 10px auto; /* Auto margins for horizontal centering */
-  display: block; /* Ensures the input takes the full width available */
-  border: 1px solid #ccc; /* Example border color */
-  border-radius: 20px; /* Rounded corners, adjust as desired */
-  background-color: #fff; /* Input background color */
+  margin: 10px auto; 
+  display: block; 
+  border: 1px solid #ccc; 
+  border-radius: 20px; 
+  background-color: #fff; 
 }
 
 #answer {

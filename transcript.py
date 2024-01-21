@@ -20,33 +20,33 @@ class Transcript():
             
             for word in words:
                 if not word.startswith("["):
-                    self.words.append([word, timestamp])
-        self.findTime()
+                    self.words.append([word.lower(), timestamp])
+        print(self.findTime())
 
 
-            
+
+
     def findTime(self):
-        answer = findAnswer(self.result,self.question)
-       
-        
-        print(answer)
+        self.answer = findAnswer(self.result,self.question)
 
-        answer.lower()
+        answer = self.answer.lower()
         answer.strip("\"")
-
+        print(answer)
         if ":" in answer:
             answer = answer.split(":")[1]
             answer.strip("\"")
         if "\"" in answer:
             answer = answer.split("\"")[1]
-        if answer not in self.result:
-            return -1
+        answer.strip(".")
         answer = answer.split(" ")
-        for i in range(len(self.words)-len(answer)):
+        print(answer)
+        for i in range(len(self.words)):
             for j,word in enumerate(answer):
+                print(word)
                 if word != self.words[i+j][0]:
                     break
-                if j ==len(answer):
+                                                                                                                                                                                                   
+                if j ==len(answer)-1:
                     return self.words[i][1]
         return -1
                 

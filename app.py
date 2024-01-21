@@ -15,6 +15,7 @@ def get_video_transcript():
     transcript_obj = Transcript(video_url, question)
     transcript_text = transcript_obj.result
     summary= VideoSummary(transcript_text)
+    answer = transcript_obj.answer
 
     return jsonify({'transcript': transcript_text})
 

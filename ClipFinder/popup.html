@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ask YouTube</title>
-  <script src="popup.js"></script>
+  <meta charset="UTF-8">
+  <title>ClipFinder</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <input type="text" id="questionInput" placeholder="Ask a question...">
-  <button id="askButton">Ask</button>
-  <div id="answer"></div>
+  <header>
+    <h1>ClipFinder</h1>
+    <button id="playButton">▶️</button>
+  </header>
+  <section id="summarize-section">
+    <h2>Summarize YouTube Video</h2>
+    <button id="summarizeButton">Summarize</button>
+  </section>
+  <section id="question-section">
+    <h2>Ask a Question</h2>
+    <input type="text" id="questionInput" placeholder="Your question...">
+    <button id="askButton">Ask</button>
+  </section>
+  <script src="popup.js"></script>
 </body>
 </html>

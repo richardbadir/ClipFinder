@@ -1,0 +1,41 @@
+body, button, input {
+    font-family: Arial, sans-serif;
+    width: 500px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  #playButton {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  #summarize-section,
+  #question-section {
+    margin-bottom: 10px;
+  }
+  
+  #summarizeButton,
+  #askButton {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+  }
+  
+  #questionInput {
+    width: calc(100% - 22px); /* Adjust width for padding and border */
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  

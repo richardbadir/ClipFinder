@@ -13,12 +13,7 @@
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": "icon.png"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://*.youtube.com/*"],
-        "js": ["content.js"]
-      }
-    ]
+    }
+
   }
   

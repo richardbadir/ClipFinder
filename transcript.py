@@ -37,13 +37,14 @@ class Transcript():
             answer.strip("\"")
         if "\"" in answer:
             answer = answer.split("\"")[1]
-        answer.strip(".")
+        answer = answer.strip(".")
         answer = answer.split(" ")
+        print(answer)
         for i in range(len(self.words)):
             for j,word in enumerate(answer):
+                word = word.strip(".")
                 if word != self.words[i+j][0]:
-                    break
-                                                                                                                                                                                                   
+                    break                                                                                                                                                                         
                 if j ==len(answer)-1:
                     return self.words[i][1]
         return -1

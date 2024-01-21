@@ -2,7 +2,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 
 class Transcript():
-    def __init__(self, link :str, question:str):
+    def __init__(self, link :str, question:str=""):
         #implement a function that would get link from kevin code
         self.link = link
         #getting video ID
@@ -21,7 +21,26 @@ class Transcript():
             for word in words:
                 if not word.startswith("["):
                     self.words.append([word.lower(), timestamp])
-        print(self.findTime())
+        if question:
+            time = self.findTime()
+            print(time)
+            stime=""
+            if time>=0:
+                hours = time//3600
+                time-=hours*3600
+                minutes =time//60
+                time-=minutes*60
+                seconds = time
+
+                if hours:
+                    stime+=f"{int(hours)}h {int(minutes)}min {int(seconds)}sec"
+                elif minutes:
+                    stime+=f"{int(minutes)}min {int(seconds)}sec"
+                else:
+                    stime+=f"{int(seconds)}sec"
+            if stime:
+                self.answer+=f" Clip available at {stime}."
+            print(self.answer)
 
 
 
@@ -31,7 +50,7 @@ class Transcript():
 
         answer = self.answer.lower()
         answer.strip("\"")
-        print(answer)
+
         if ":" in answer:
             answer = answer.split(":")[1]
             answer.strip("\"")
@@ -43,7 +62,7 @@ class Transcript():
         for i in range(len(self.words)):
             for j,word in enumerate(answer):
                 word = word.strip(".")
-                if word != self.words[i+j][0]:
+                if word != self.words[i+j][0].lower().strip().strip("."):
                     break                                                                                                                                                                         
                 if j ==len(answer)-1:
                     return self.words[i][1]

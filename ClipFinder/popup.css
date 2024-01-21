@@ -49,12 +49,25 @@ h2 {
   max-width: 200px;
   padding: 10px;
   margin: 10px auto;
-  display: block; /* This ensures the button is block-level for margin: auto to work */
+  display: block;
   border: none;
-  background-color: #6200EE; /* Example button color */
-  color: #fff; /* Button text color */
+  background-color: #6200EE;
+  color: #fff;
   cursor: pointer;
-  border-radius: 15px; /* Adds rounded corners, adjust the value as desired */
+  border-radius: 15px;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Add hover effect */
+#summarizeButton:hover,
+#askButton:hover {
+  background-image: linear-gradient(to right, #6441A5, #2a0845); /* Gradient on hover */
+}
+
+/* Add active effect */
+#summarizeButton:active,
+#askButton:active {
+  background-image: linear-gradient(to right, #2a0845, #6441A5); /* Different gradient on active/click */
 }
 
 #questionInput {

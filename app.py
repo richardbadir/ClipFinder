@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from transcript import Transcript
+from OpenAI import VideoSummary
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +14,8 @@ def get_video_transcript():
 
     transcript_obj = Transcript(video_url, question)
     transcript_text = transcript_obj.result
+    summary= VideoSummary(transcript_text)
+
     return jsonify({'transcript': transcript_text})
 
 if __name__ == '__main__':

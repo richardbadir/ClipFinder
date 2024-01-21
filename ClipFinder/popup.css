@@ -1,41 +1,127 @@
-body, button, input {
-    font-family: Arial, sans-serif;
-    width: 500px;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #171717;
+  color: #000;
+  line-height: 1.6;
+  position: relative;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 300px;
+  margin: 0 auto; /* Center the logo */
+}
+
+#summarize-section,
+#question-section {
+  margin-bottom: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: #fff; /* This changes the color of h2 elements to white */
+}
+
+#summarizeButton,
+#askButton {
+  max-width: 200px;
+  padding: 10px;
+  margin: 10px auto;
+  display: block; /* This ensures the button is block-level for margin: auto to work */
+  border: none;
+  background-color: #6200EE; /* Example button color */
+  color: #fff; /* Button text color */
+  cursor: pointer;
+  border-radius: 15px; /* Adds rounded corners, adjust the value as desired */
+}
+
+#questionInput {
+  width: calc(100% - 40px); /* Adjust the width as needed, accounting for padding */
+  padding: 10px;
+  margin: 10px auto; /* Auto margins for horizontal centering */
+  display: block; /* Ensures the input takes the full width available */
+  border: 1px solid #ccc; /* Example border color */
+  border-radius: 20px; /* Rounded corners, adjust as desired */
+  background-color: #fff; /* Input background color */
+}
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: drop 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+  margin-left: -25%;
+}
+
+.line:nth-child(1)::after {
+  animation-delay: 2s;
+}
+
+.line:nth-child(3) {
+  margin-left: 25%;
+}
+
+.line:nth-child(3)::after {
+  animation-delay: 2.5s;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
   }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  100% {
+    top: 110%;
   }
-  
-  h1 {
-    font-size: 1.5em;
-  }
-  
-  #playButton {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-  }
-  
-  #summarize-section,
-  #question-section {
-    margin-bottom: 10px;
-  }
-  
-  #summarizeButton,
-  #askButton {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-  }
-  
-  #questionInput {
-    width: calc(100% - 22px); /* Adjust width for padding and border */
-    padding: 10px;
-    margin-bottom: 5px;
-  }
-  
+}

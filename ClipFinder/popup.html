@@ -6,19 +6,30 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <header>
-    <h1>ClipFinder</h1>
-    <button id="playButton">▶️</button>
-  </header>
-  <section id="summarize-section">
-    <h2>Summarize YouTube Video</h2>
-    <button id="summarizeButton">Summarize</button>
-  </section>
-  <section id="question-section">
-    <h2>Ask a Question</h2>
-    <input type="text" id="questionInput" placeholder="Your question...">
-    <button id="askButton">Ask</button>
-  </section>
+  
+    
+    <header>
+      <img src="logo_v2.png" alt="logo">
+    </header>
+    <section id="summarize-section">
+      <h2>Summarize YouTube Video</h2>
+      <div class="button-background">
+        <button id="summarizeButton">Summarize</button>
+      </div>
+    </section>
+    <section id="question-section">
+      <h2>Ask a Question</h2>
+      <div class="button-background">
+        <input type="text" id="questionInput" placeholder="Your question...">
+        <button id="askButton">Ask</button>
+      </div>
+    </section>
+    <div class="lines" style="pointer-events: none">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  
   <script src="popup.js"></script>
 </body>
 </html>

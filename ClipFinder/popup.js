@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Get the current tab's URL
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
           var activeTab = tabs[0];
-          var videoUrl = activeTab.url; // This is the URL you want
+          var videoUrl = activeTab.url;
           console.log("Video URL", videoUrl);
           console.log("Question", question);
           sendVideoUrlAndQuestionToServer(videoUrl, question);
@@ -48,7 +48,7 @@ function updatePopupWithAnswer(answer) {
   const answerElement = document.createElement('div');
   answerElement.id = 'answer';
   answerElement.textContent = answer;
-  answerElement.style.color = '#FFFFFF'; // Set the text color
+  answerElement.style.color = '#FFFFFF';
   document.body.appendChild(answerElement);
 }
 

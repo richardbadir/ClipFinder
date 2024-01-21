@@ -39,10 +39,8 @@ class Transcript():
             answer = answer.split("\"")[1]
         answer.strip(".")
         answer = answer.split(" ")
-        print(answer)
         for i in range(len(self.words)):
             for j,word in enumerate(answer):
-                print(word)
                 if word != self.words[i+j][0]:
                     break
                                                                                                                                                                                                    

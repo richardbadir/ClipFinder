@@ -20,7 +20,7 @@ class Transcript():
             
             for word in words:
                 if not word.startswith("["):
-                    self.words.append([word, timestamp])
+                    self.words.append([word.lower(), timestamp])
         print(self.findTime())
 
 
@@ -37,18 +37,16 @@ class Transcript():
             answer.strip("\"")
         if "\"" in answer:
             answer = answer.split("\"")[1]
-        
-        if answer not in self.result:
-            return -1
+        answer.strip(".")
         answer = answer.split(" ")
-        for i in range(len(self.words)-len(answer)):
+        print(answer)
+        for i in range(len(self.words)):
             for j,word in enumerate(answer):
-                print("=======")
-                print(self.words[i+j][0])
                 print(word)
                 if word != self.words[i+j][0]:
                     break
-                if j ==len(answer):
+                                                                                                                                                                                                   
+                if j ==len(answer)-1:
                     return self.words[i][1]
         return -1
                 

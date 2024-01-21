@@ -1,4 +1,3 @@
-# transcript.py
 from youtube_transcript_api import YouTubeTranscriptApi
 from OpenAI import findAnswer, VideoSummary, ExplainAnswer
 
@@ -27,28 +26,28 @@ class Transcript():
 
             
     def findTime(self):
-        answers = findAnswer(self.result,self.question)
-        for answer in answers:
-            answer= str(answer.message).strip()
-            answer.lower()
-            answer.strip("\"")
-            if ":" in answer:
-                answer = answer.split(":")[1]
-                answer.strip("\"")
-            if "\"" in answer:
-                answer = answer.split("\"")[1]
-            if answer not in self.result:
-                continue
-            answer = answer.split(" ")
-            for i in range(len(self.words)-len(answer)):
-                for j,word in enumerate(answer):
-                    if word != self.words[i+j][0]:
-                        break
-                    if j ==len(answer):
-                        print(self.words[i][1])
+        answer = findAnswer(self.result,self.question)
+       
+        
+        print(answer)
 
-                        return self.words[i][1]
-        print("no")
+        answer.lower()
+        answer.strip("\"")
+
+        if ":" in answer:
+            answer = answer.split(":")[1]
+            answer.strip("\"")
+        if "\"" in answer:
+            answer = answer.split("\"")[1]
+        if answer not in self.result:
+            return -1
+        answer = answer.split(" ")
+        for i in range(len(self.words)-len(answer)):
+            for j,word in enumerate(answer):
+                if word != self.words[i+j][0]:
+                    break
+                if j ==len(answer):
+                    return self.words[i][1]
         return -1
                 
 

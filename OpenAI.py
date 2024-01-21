@@ -12,9 +12,9 @@ def findAnswer(transcript: str, question:str):
         {"role": "user", "content": f"Here is question to which you need to find the answer: {question}"}
     ]
     )
-    return completion.choices
+    return completion.choices[0].message.content
 
-def VideoSummary(transcript: str, question:str):
+def VideoSummary(transcript: str):
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
@@ -22,7 +22,7 @@ def VideoSummary(transcript: str, question:str):
         {"role": "user", "content": f"Transcript: \"{transcript}\""}
     ]
     )
-    return completion.choices
+    return completion.choices[0].message.content
 
 def ExplainAnswer(transcript: str, question:str):
     completion = client.chat.completions.create(
@@ -32,4 +32,4 @@ def ExplainAnswer(transcript: str, question:str):
         {"role": "user", "content": f"Here is question to which you need to find the answer: \"{question}\""}
     ]
     )
-    return completion.choices
+    return completion.choices[0].message.content
